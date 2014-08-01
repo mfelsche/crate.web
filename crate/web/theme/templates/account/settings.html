@@ -5,7 +5,7 @@
 {% block head_title %}{{ gettext("Account") }}{% endblock %}
 
 {% block body %}
-  <form method="POST" action="{{ url("account_settings") }}">
+  <form method="POST" action="#">
     {{ csrf() }}
 
     <legend>{{ gettext("Account") }}</legend>

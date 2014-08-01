@@ -5,12 +5,12 @@
 {% block body %}
   <div class="row">
     <div class="span12">
-      <form method="post" action="{{ url("account_confirm_email", key=confirmation.key) }}" class="form-horizontal">
+      <form method="post" class="form-horizontal">
         {{ csrf() }}
 
         <legend>{{ gettext("Confirm Email") }}</legend>
         <fieldset>
-          <p>{% trans email=confirmation.email_address.email %}Confirm email address <b>{{ email }}</b>?{% endtrans %}</p>
+          <p>Confirm email address <b>{{ email }}</b>?</p>
           <div class="form-actions">
             <button type="submit" class="btn btn-primary">{{ gettext("Confirm") }}</button>
           </div>

@@ -5,7 +5,7 @@
 {% block body %}
   <div class="row">
     <div class="span12">
-      <form method="POST" action="{{ url("account_logout") }}" class="form-horizontal">
+      <form method="POST" class="form-horizontal">
         {{ csrf() }}
 
         <legend>{{ gettext("Log out") }}</legend>

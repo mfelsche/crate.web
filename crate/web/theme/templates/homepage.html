@@ -66,16 +66,14 @@
     </div>
   </div>
 
-
-  <div id="search-results" class="row">
-    <div class="results">
-    {% for package in packages %}
-        <div class="result row">
-            <div class="span9 package-name"><a href="{{ package.get_absolute_url() }}" title="{{ package.name }}">{{ package.name }}</a></div>
+  {% for package in packages %}
+    <div class="row">
+        <div class="span12" id="tagline">
+            <a href="{{ package.get_absolute_url() }}" title="{{ package.name }}">{{ package.name }}</a>
         </div>
-    {% endfor %}
     </div>
-  </div>
+  {% endfor %}
+
 {% endblock %}
 
 {% block extra_script %}

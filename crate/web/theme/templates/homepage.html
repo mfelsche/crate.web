@@ -65,6 +65,13 @@
       </div>
     </div>
   </div>
+
+  <div class="span12">
+    {% for package in packages %}
+        <a href="{{ package.get_simple_url() }}" title="{{ package.name }}">{{ package.name}}</a>
+    {% endfor %}
+
+  </div>
 {% endblock %}
 
 {% block extra_script %}

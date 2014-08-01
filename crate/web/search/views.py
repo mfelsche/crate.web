@@ -9,6 +9,7 @@ from django.views.generic.edit import FormMixin
 
 from saved_searches.models import SavedSearch
 
+from crate.web.packages.models import Package
 from crate.web.search.forms import SearchForm
 
 
@@ -21,6 +22,14 @@ class Search(TemplateResponseMixin, FormMixin, View):
     form_class = SearchForm
     paginator_class = Paginator
     search_key = 'general_search'
+
+    def get_context_data(self, **kwargs):
+        ctx = super(Search, self).get_context_data(**kwargs)
+        if "q" not in self.request.GET:
+            ctx.update({
+                "packages": Package.objects.order_by('name')
+            })
+        return ctx
 
     def get_template_names(self):
         if "q" in self.request.GET:

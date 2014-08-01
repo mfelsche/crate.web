@@ -4,11 +4,11 @@
 {% import "intercom.html" as intercom %}
 
 {% block head_title_base -%}
-{% block head_title %}{% endblock %} &mdash; {{ SITE_NAME }}
+{% block head_title %}{% endblock %} &mdash; Package Index
 {%- endblock %}
 
 {% block site_brand -%}
-<a class="brand" href="{{ url("search") }}">{{ SITE_NAME }} <span class="label label-info">{{ gettext("Beta") }}</span></a>
+<a class="brand" href="{{ url("search") }}">Package Index</a>
 {%- endblock %}
 
 {% block nav %}

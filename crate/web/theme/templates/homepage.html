@@ -6,12 +6,6 @@
 
 {% block body %}
   <div class="row">
-    <div id="main-title" class="span4">
-      <h1>Crate.io</h1>
-    </div>
-  </div>
-
-  <div class="row">
     <div class="span12">
       <div id="search-area">
         <form class="form-search" method="GET" action="{{ url("search") }}">
@@ -35,14 +29,6 @@
   </div>
 
   {% set pkginfo = package_information() %}
-
-  <div class="row">
-    <div class="span12">
-      <div id="tagline">
-        <p>{{ gettext("Crate is a new kind of Python package index.") }}</p>
-      </div>
-    </div>
-  </div>
 
   <div class="row">
     <div class="span4">

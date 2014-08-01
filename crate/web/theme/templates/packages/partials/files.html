@@ -12,11 +12,10 @@
   <tbody>
     {% for file in release_files %}
       <tr>
-        <td><a href="{{ file.get_absolute_url() }}">{{ file.file.name|filename }}</a> (<a data-toggle="modal" href="#digest-{{ file.pk }}">{{ char_split(file.digest, names=["type", "digest"]).type }}</a>)</td>
+        <td><a href="">{{ file.filename|filename }}</a></td>
         <td>{{ file.get_type_display() }}</td>
         <td>{{ file.get_python_version_display() }}</td>
         <td>{{ file.created|date("DATE_FORMAT") }}</td>
-        <td>{# {{ file.file.size|filesizeformat }} #}</td>
         <td>{{ file.downloads|intcomma }}</td>
       </tr>
     {% else %}
@@ -35,14 +34,10 @@
   <div id="digest-{{ file.pk }}" class="modal hide fade">
     <div class="modal-header">
       <a href="#" class="close" data-dismiss="modal">×</a>
-      <h3>{{ file.file.name|filename }}</h3>
+      <h3>{{ file.filename|filename }}</h3>
     </div>
 
     <div class="modal-body">
-      <dl>
-        <dt>{{ char_split(file.digest, names=["type", "digest"]).type }}</dt>
-        <dd>{{ char_split(file.digest, names=["type", "digest"]).digest }}</dd>
-      </dl>
     </div>
   </div>
 {% endfor %}

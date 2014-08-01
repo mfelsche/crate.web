@@ -8,7 +8,7 @@
     {% for release in releases %}
         {% for file in release.files.all() %}
             {% if not file.hidden or show_hidden %}
-                <a href="{{ file.get_absolute_url() }}{% if file.digest %}#{{ char_split(file.digest, names=["type", "digest"]).type }}={{ char_split(file.digest, names=["type", "digest"]).digest }}{% endif %}" rel="package">{{ file.file.name|filename }}</a>
+                {{ file.filename|filename }}
             {% endif %}
         {% endfor %}
     {% endfor %}

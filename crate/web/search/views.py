@@ -9,7 +9,7 @@ from django.views.generic.edit import FormMixin
 
 from saved_searches.models import SavedSearch
 
-from crate.web.packages.models import Package
+from crate.web.packages.models import Package, Release
 from crate.web.search.forms import SearchForm
 
 
@@ -27,7 +27,7 @@ class Search(TemplateResponseMixin, FormMixin, View):
         ctx = super(Search, self).get_context_data(**kwargs)
         if "q" not in self.request.GET:
             ctx.update({
-                "packages": Package.objects.order_by('name')
+                "packages": Package.objects.exclude(releases=None).order_by('-release__created')[0:300]
             })
         return ctx
 

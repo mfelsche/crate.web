@@ -67,13 +67,13 @@
   </div>
 
   <div class="span12">
-    <ul>
+    <div class="results-wrapper">
     {% for package in packages %}
-        <li>
-            <a href="{{ package.get_absolute_url() }}" title="{{ package.name }}">{{ package.name}}</a>
-        </li>
+        <div class="result row">
+            <div class="span9 package-name"><a href="{{ package.get_absolute_url() }}" title="{{ package.name }}">{{ package.name }}</a></div>
+        </div>
     {% endfor %}
-    </ul>
+    </div>
   </div>
 {% endblock %}
 

@@ -27,7 +27,7 @@ class Search(TemplateResponseMixin, FormMixin, View):
         ctx = super(Search, self).get_context_data(**kwargs)
         if "q" not in self.request.GET:
             ctx.update({
-                "packages": Package.objects.exclude(releases=None).order_by('-release__created')[0:300]
+                "packages": Package.objects.exclude(releases=None).order_by('-releases__created')[0:300]
             })
         return ctx
 

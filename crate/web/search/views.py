@@ -23,11 +23,20 @@ class Search(TemplateResponseMixin, FormMixin, View):
     paginator_class = Paginator
     search_key = 'general_search'
 
+    def packages(self):
+        uniq = set()
+        for package in Package.objects.exclude(releases=None).order_by('-releases__created')[0:300]:
+            if package.name in uniq:
+                continue
+            else:
+                yield package
+            uniq.add(package.name)
+
     def get_context_data(self, **kwargs):
         ctx = super(Search, self).get_context_data(**kwargs)
         if "q" not in self.request.GET:
             ctx.update({
-                "packages": Package.objects.exclude(releases=None).order_by('-releases__created')[0:300]
+                "packages": self.packages()
             })
         return ctx
 

@@ -68,7 +68,7 @@
 
   <div class="span12">
     {% for package in packages %}
-        <a href="{{ package.get_simple_url() }}" title="{{ package.name }}">{{ package.name}}</a>
+        <a href="{{ package.get_absolute_url() }}" title="{{ package.name }}">{{ package.name}}</a>
     {% endfor %}
 
   </div>

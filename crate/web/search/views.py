@@ -3,7 +3,6 @@ from django.conf import settings
 from django.core.paginator import Paginator, InvalidPage
 from django.http import Http404
 from django.utils.translation import ugettext as _
-from django.db.models import Max
 
 from django.views.generic.base import TemplateResponseMixin, View
 from django.views.generic.edit import FormMixin
@@ -27,7 +26,7 @@ class Search(TemplateResponseMixin, FormMixin, View):
     def packages(self):
         uniq = set()
         newest = Release.objects.order_by('modified')[0].modified
-        for package in Package.objects.exclude(releases=None, releases__created__gte=newest).order_by('-releases__created')[0:300]:
+        for package in Package.objects.exclude(releases=None).exclude(releases__created__gte=newest).order_by('-releases__created')[0:300]:
             if package.name in uniq:
                 continue
             else:
